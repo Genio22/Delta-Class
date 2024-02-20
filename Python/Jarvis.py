@@ -74,7 +74,7 @@ if __name__ == "__main__":
             speak(results)
 
         elif 'open youtube' in query:
-            webbrowser.open("youtube.com")
+            webbrowser.open("https://www.youtube.com/")
 
         elif 'open google' in query:
             webbrowser.open("google.com")
@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
 
         elif 'play music' in query:
-            music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
+            music_dir = 'E:\\ALL\\Music\\Bangla Natok Songs'
             songs = os.listdir(music_dir)
             print(songs)    
             os.startfile(os.path.join(music_dir, songs[0]))
@@ -96,6 +96,31 @@ if __name__ == "__main__":
         elif 'open code' in query:
             codePath = "C:\\Users\\Haris\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(codePath)
+ while True:
+                
+                self.query = self.takecommand().lower()
+                #song
+
+       
+        elif 'song please' in self.query or 'play some song' in self.query or 'could you play some song' in self.query:
+            speak('Sir what song should i play...')
+            song = self.takecommand()
+            webbrowser.open(f'https://open.spotify.com/search/{song}')
+            sleep(13)
+            pyautogui.click(x=1055, y=617)
+            speak('Playing' + song)
+        #spotify
+        elif 'play' in self.query or 'can you play' in self.query or 'please play' in self.query:
+            speak("OK! here you go!!")
+            self.query = self.query.replace("play", "")
+            self.query = self.query.replace("could you play", "")
+            self.query = self.query.replace("please play", "")
+            webbrowser.open(f'https://open.spotify.com/search/{self.query}')
+            sleep(19)
+            pyautogui.click(x=1055, y=617)
+            print('Enjoy!' + reset)
+            speak("Enjoy Sir!!")
+
 
         elif 'email to harry' in query:
             try:
