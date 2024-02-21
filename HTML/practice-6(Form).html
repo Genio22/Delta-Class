@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body style="background-color: rgb(17, 16, 16); color: rgb(215, 231, 196)">
+    <form action="/server">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="Name" id="name" placeholder="Enter you name" />
+      </div>
+      <br />
+      <div>
+        Sex:
+        <input type="radio" name="Sex" id="Male" value="Male" />
+        <label for="Male">Male</label>
+        <input type="radio" name="Sex" id="Female" value="Female" />
+        <label for="Female">Female</label>
+      </div>
+      <br />
+      <div>
+        <label for="Country">Country:</label>
+        <select name="Country" id="Country">
+          <option value="">Select an option</option>
+          <option value="Bangladesh">Bangladesh</option>
+          <option value="Japan">Japan</option>
+          <option value="China">China</option>
+          <option value="Germany">Germany</option>
+          <option value="Australia">Australia</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label for="Message">Message:</label><br />
+        <textarea name="Msg" id="Message" cols="30" rows="10"></textarea>
+      </div>
+      <br />
+      <div>
+        <input type="checkbox" name="Subscribe" id="Sub" />
+        <label for="Sub">Subscribe</label>
+      </div>
+      <br />
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
+
+<!-- 
+    file:///E:/server?Name=sahaf&Sex=Male&Country=Bangladesh&Msg=nice+day%3A%29&Subscribe=on -->

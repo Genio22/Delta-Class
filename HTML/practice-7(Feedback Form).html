@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback Form</title>
+  </head>
+  <body>
+    <form action="/server">
+      <header>
+        <caption>
+          <h1>Feedback Form</h1>
+        </caption>
+      </header>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="Name" id="name" placeholder="Enter you name" />
+      </div>
+      <br />
+      <div>
+        <label for="email">Name:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter you email"
+        />
+      </div>
+      <br />
+      <div>
+        <label for="Message">Message:</label><br />
+        <textarea
+          name="Msg"
+          id="Message"
+          cols="30"
+          rows="10"
+          placeholder="Feel free to leave you Feedback &#x1F970;"
+        ></textarea>
+      </div>
+      <br />
+      <div>
+        Rate us our of 5:
+        <br />
+        <input type="radio" name="Review" id="1" value="1" />
+        <label for="1">1</label><br />
+        <input type="radio" name="Review" id="2" value="2" />
+        <label for="2">2</label><br />
+        <input type="radio" name="Review" id="3" value="3" />
+        <label for="3">3</label><br />
+        <input type="radio" name="Review" id="4" value="4" />
+        <label for="4">4</label><br />
+        <input type="radio" name="Review" id="5" value="5" checked />
+        <label for="5">5</label><br />
+      </div>
+      <br />
+      <button>Send your message</button>
+    </form>
+  </body>
+</html>
