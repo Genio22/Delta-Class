@@ -6,26 +6,29 @@ import speech_recognition as sr
 import pyttsx3
 import numpy as np
 from gtts import gTTS
-mytext = 'Welcome to me'
-language = 'en'
-# from os.path import join, dirname
-# import matplotlib.pyplot as plt
-# ^ matplotlib is great for visualising data and for testing purposes but usually not needed for production
-openai.api_key='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'
-load_dotenv()
+
+# Set up OpenAI API key and model
+openai.api_key = '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'
 model = 'gpt-3.5-turbo'
-model = 'gpt-4'
-# Set up the speech recognition and text-to-speech engines
+
+# Initialize speech recognition and text-to-speech engines
 r = sr.Recognizer()
 engine = pyttsx3.init()
-voice = engine.getProperty('voices')[1]
-engine.setProperty('voice', voice.id)
+
+# Configure the voice
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+
+# Greetings for wake word detection
 name = "Ahnaf"
-greetings = [f"whats up master {name}",
-             "yeah?",
-             "Well, hello there, Master of Puns and Jokes - how's it going today?",
-             f"Ahoy there, Captain {name}! How's the ship sailing?",
-             f"Bonjour, Monsieur {name}! Comment ça va? Wait, why the hell am I speaking French?" ]
+greetings = [
+    f"Hey, what's up, Master {name}?",
+    "Yeah?",
+    f"Hello, Master {name}! How are you today?",
+    f"Greetings, Captain {name}! How's everything?",
+    f"Bonjour, Monsieur {name}! Comment ça va?"
+]
+
 def listen_for_wake_word(source):
     print("Listening for 'Hey'...")
 
@@ -33,7 +36,7 @@ def listen_for_wake_word(source):
         audio = r.listen(source)
         try:
             text = r.recognize_google(audio)
-            if "hey" in text.lower():
+            if "Hello" in text.lower():
                 print("Wake word detected.")
                 engine.say(np.random.choice(greetings))
                 engine.runAndWait()
@@ -41,6 +44,7 @@ def listen_for_wake_word(source):
                 break
         except sr.UnknownValueError:
             pass
+
 # Listen for input and respond with OpenAI API
 def listen_and_respond(source):
     print("Listening...")
@@ -52,23 +56,20 @@ def listen_and_respond(source):
             if not text:
                 continue
             # Send input to OpenAI API
-            response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{text}"}])
-            response_text = response.choices[0].message.content
+            response = openai.Completion.create(
+                engine=model,
+                prompt=text,
+                max_tokens=150
+            )
+            response_text = response.choices[0].text.strip()
             print(response_text)
-            print("generating audio")
-            myobj = gTTS(text = response_text, lang = language, slow = False)
-            myobj.save("response.mp3")
-            print("speaking")
-            os.system("vlc response.mp3")
             # Speak the response
-            print("speaking")
             engine.say(response_text)
             engine.runAndWait()
-            if not audio:
-                listen_for_wake_word(source)
+            listen_for_wake_word(source)
+            break
         except sr.UnknownValueError:
-            time.sleep(2)
-            print("Silence found, shutting up, listening...")
+            print("Silence found, listening...")
             listen_for_wake_word(source)
             break
         except sr.RequestError as e:
