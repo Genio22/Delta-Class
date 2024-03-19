@@ -11,9 +11,9 @@ language = 'en'
 # from os.path import join, dirname
 # import matplotlib.pyplot as plt
 # ^ matplotlib is great for visualising data and for testing purposes but usually not needed for production
-openai.api_key='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'
+openai.api_key='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'
 load_dotenv()
-model = 'gpt-3.5-turbo'
+model = 'gpt-3.5-turbo-instruct-0914'
 model = 'gpt-4'
 # Set up the speech recognition and text-to-speech engines
 r = sr.Recognizer()
