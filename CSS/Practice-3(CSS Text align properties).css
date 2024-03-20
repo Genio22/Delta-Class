@@ -1,0 +1,27 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+h1 {
+  text-align: center;
+  text-decoration: green double underline;
+  letter-spacing: 10px;
+}
+h2 {
+  text-align: center;
+  text-decoration: red wavy overline underline;
+}
+p {
+  text-align: justify;
+  font-weight: 100;
+  line-height: 1.2;
+  letter-spacing: normal;
+  font-size: 16px;
+}
+a {
+  text-decoration: none;
+  color: rgb(28, 209, 200);
+}
+h3 {
+  /* color: blue; */
+  text-decoration: dotted underline;
+}
