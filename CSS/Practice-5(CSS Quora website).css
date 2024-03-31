@@ -9,3 +9,14 @@ h3 {
   background-color: #b92b27;
   color: white;
 }
+.upvote {
+  color: #2e69ff;
+}
+a {
+  text-decoration: none;
+}
+
+.post a {
+  color: purple;
+  background-color: yellow;
+}
